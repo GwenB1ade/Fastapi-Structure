@@ -4,14 +4,14 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
 from config import settings
 
 engine = create_engine(settings.database_url)
-session = sessionmaker(engine, class_ = Session, expire_on_commit = False)
+session_creater = sessionmaker(engine, class_ = Session, expire_on_commit = False)
 
 class Base(DeclarativeBase):
     pass
 
 
 def get_db():
-    db = session()
+    db = session_creater()
     try:
         yield db
     
