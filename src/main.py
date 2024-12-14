@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from other.admin import admin
+from admin.admin import admin
 from starlette.middleware.sessions import SessionMiddleware
 import uvicorn
 
-from other import exceptions
+from . import exceptions
 from config import settings
 
 
