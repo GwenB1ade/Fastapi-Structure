@@ -1,32 +1,16 @@
-example .env:
+# Архитектура приложения
 
-```
-DB_NAME=postgres
-DB_USER=admin
-DB_PASS=root
-DB_PORT=5432
-DB_HOST=127.0.0.1
+Этот репозиторий содержит описание архитектуры моего приложения.
 
-RABBIT_USER=adminadmin
-RABBIT_PASS=root
-RABBIT_PORT=5672
-RABBIT_HOST=127.0.0.1
+## Установка и запуск
 
-REDIS_PORT=6379
-REDIS_HOST=localhost
-REDIS_DB=0
+1. Сделайте скрипт `startapp.sh` исполняемым:
+   ```bash
+   chmod +x startapp.sh
+   ./startapp.sh
+   ```
 
-JWT_SECRET=mHK3zl/hZeSY6LyL
-JWT_ALGORITHM=HS256
-
-SESSION_SECRET=vNjv3JqYHPs3+VwD
-
-API_HOST=0.0.0.0
-API_PORT=8000
-```
-
-start:
-```
-uv add -r req.txt
-docker compose up -d
+2. Запуск приложения:
+```bash
+uv run main.py
 ```
