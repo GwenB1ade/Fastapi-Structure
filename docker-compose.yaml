@@ -1,0 +1,40 @@
+version: "3"
+name: startapp
+
+services:
+  postgresql-app:
+    container_name: "postgresql-app"
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+
+    image: postgres:13.14-alpine3.19
+    volumes:
+      - postgres_data-app:/var/lib/postgresql/data
+
+  rabbitmq-app:
+    container_name: "rabbitmq-app"
+    image: rabbitmq:3.13.6-management-alpine
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_PASS}
+    ports:
+      - 15672:15672
+      - ${RABBIT_PORT}:5672
+    volumes:
+      - rabbitmq-data-app:/var/lib/rabbitmq
+
+  redis-cache-app:
+    container_name: "redis-cache-app"
+    ports:
+      - ${REDIS_PORT}:6379
+
+    image: redis:alpine3.19
+
+volumes:
+  rabbitmq-data-app:
+  postgres_data-app:

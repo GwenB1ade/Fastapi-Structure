@@ -5,5 +5,5 @@ pydantic-settings
 psycopg2-binary
 asyncpg
 itsdangerous
-starlette-admin 
-
+starlette-admin
+uvicorn
